@@ -63,7 +63,7 @@
                                         <small>Created by Admin</small>
                                     </td>
                                     <td>
-                                        <a href="#">{!! Str::limit($page->details, 60, '...') !!}</a>
+                                        {!! Str::limit($page->details, 60, '...') !!}
                                     </td>
                                     <td>
                                         <img src="{{ asset('storage/images/page').'/' }}{{$page->page_image}}" width="80px" height="40px">

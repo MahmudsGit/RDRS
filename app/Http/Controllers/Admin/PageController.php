@@ -57,8 +57,8 @@ class PageController extends Controller
             if (!Storage::disk('public')->exists('images/page')){
                 Storage::disk('public')->makeDirectory('images/page');
             }
-            $page_image_make = Image::make($page_image)->resize(600,400)->save($image_name);
-            Storage::disk('public')->put('images/page/'.$image_name,$page_image_make);
+            Image::make($page_image)->resize(600,400)->save('storage/images/page/'.$image_name);
+
         }else{
             $image_name = 'default_page.png';
         }
@@ -127,8 +127,8 @@ class PageController extends Controller
             if (Storage::disk('public')->exists('images/page'.'/'.$page->page_image)){
                 Storage::disk('public')->delete('images/page'.'/'.$page->page_image);
             }
-            $page_image_make = Image::make($page_image)->resize(600,400)->save($image_name);
-            Storage::disk('public')->put('images/page/'.$image_name,$page_image_make);
+            Image::make($page_image)->resize(600,400)->save('storage/images/page/'.$image_name);
+
         }else{
             $image_name = $page->page_image;
         }

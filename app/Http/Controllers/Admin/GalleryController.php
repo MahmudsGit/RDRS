@@ -44,10 +44,10 @@ class GalleryController extends Controller
         $this->validate($request, [
            'gallery_name'=>'required',
            'gallery_title'=>'required',
-           'image'=>'required'
+           'image.*'=>'required|mimes:jpg,png,jpeg,bmp|'
         ]);
 
-        $image=[];
+        $images=[];
         if ($request->hasFile('image')){
             $i = 0;
             foreach ($request->file('image') as $ImageFile){
@@ -56,18 +56,18 @@ class GalleryController extends Controller
                 if (!Storage::disk('public')->exists('images/gallery')){
                     Storage::disk('public')->makeDirectory('images/gallery');
                 }
-                $page_image_make = Image::make($ImageFile)->resize(600,400)->save($image_name);
-                Storage::disk('public')->put('images/gallery/'.$image_name,$page_image_make);
-                $image[]=$image_name;
+                Image::make($ImageFile)->resize(600,400)->save('storage/images/gallery/'.$image_name);
+
+                $images[]=$image_name;
                 $i++;
             }
         }else{
-            $image = 'default_gallery.png';
+            $images = 'default_gallery.png';
         }
         $gallery = new Gallery();
         $gallery->gallery_name = $request->gallery_name;
         $gallery->gallery_title = $request->gallery_title;
-        $gallery->image = json_encode($image);
+        $gallery->image = json_encode($images);
         $gallery->save();
 
         Toastr::success('Gallery Save Success','Success');

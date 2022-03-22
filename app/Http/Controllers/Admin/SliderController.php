@@ -8,7 +8,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class SliderController extends Controller
 {
@@ -57,8 +57,8 @@ class SliderController extends Controller
             if (!Storage::disk('public')->exists('images/slider')){
                 Storage::disk('public')->makeDirectory('images/slider');
             }
-            $slider_image_make = Image::make($slider_image)->resize(1600,1000)->save($image_name);
-            Storage::disk('public')->put('images/slider/'.$image_name,$slider_image_make);
+            Image::make($slider_image)->resize(1600,1000)->save('storage/images/slider/'.$image_name);
+
         }else{
             $image_name = 'default_slider.png';
         }
@@ -128,8 +128,8 @@ class SliderController extends Controller
             if (Storage::disk('public')->exists('images/slider/'.$slider->slider_image)){
                 Storage::disk('public')->delete('images/slider/'.$slider->slider_image);
             }
-            $slider_image_make = Image::make($slider_image)->resize(1600,1000)->save($image_name);
-            Storage::disk('public')->put('images/slider/'.$image_name,$slider_image_make);
+            Image::make($slider_image)->resize(1600,1000)->save('storage/images/slider/'.$image_name);
+
         }else{
             $image_name = $slider->slider_image;
         }
