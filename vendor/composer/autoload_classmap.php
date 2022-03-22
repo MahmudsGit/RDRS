@@ -28,7 +28,6 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Gallery' => $baseDir . '/app/Models/Gallery.php',
-    'App\\Models\\GalleryImage' => $baseDir . '/app/Models/GalleryImage.php',
     'App\\Models\\Page' => $baseDir . '/app/Models/Page.php',
     'App\\Models\\Slider' => $baseDir . '/app/Models/Slider.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

@@ -10,10 +10,9 @@
                 <div class="title_left">
                     <h3>Slider Form</h3>
                 </div>
-
                 <div class="title_right">
                     <div class="pull-right">
-                        <a href="{{ route('slider.index') }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> All Sliders </a>
+                        <a href="{{ route('gallery.index') }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> All Galleries </a>
                     </div>
                 </div>
             </div>
@@ -52,15 +51,9 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="main_image">Thumbnail Image <span class="required">*</span></label>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Images <small>(Multiple) </small><span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="file" id="main_image" name="main_image"  class="form-control ">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="images">Images <small>(Multiple) </small><span class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="file" id="image" name="images[]"  class="form-control" multiple>
+                                        <input type="file" id="image" name="image[]"  class="form-control" multiple>
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
