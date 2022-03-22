@@ -22,7 +22,7 @@
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Create New Slider <small>New Slider Image Form</small></h2>
+                            <h2>Create New Gallery <small>New Gallery Image Form</small></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
@@ -37,57 +37,38 @@
                         </div>
                         <div class="x_content">
                             <br />
-                            <form action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                 @csrf
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Slider Title <span class="required">*</span>
-                                    </label>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="gallery_name">Gallery Name <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="title" name="title" class="form-control ">
+                                        <input type="text" id="gallery_name" name="gallery_name" class="form-control ">
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="subtitle">Slider Sub-Title <span class="required">*</span>
-                                    </label>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="gallery_title">Gallery Title <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="subtitle" name="subtitle" class="form-control ">
+                                        <input type="text" id="gallery_title" name="gallery_title" class="form-control ">
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="slider_image">Slider Image <span class="required">*</span>
-                                    </label>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="main_image">Thumbnail Image <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="file" id="slider_image" name="slider_image"  class="form-control ">
+                                        <input type="file" id="main_image" name="main_image"  class="form-control ">
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="link_name">Slider Link Name <span class="required">*</span>
-                                    </label>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="images">Images <small>(Multiple) </small><span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="link_name" name="link_name" class="form-control ">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="link">Slider Link <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="text" id="link" name="link" class="form-control ">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="status">Status <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        Visible: <input type="radio" class="flat form-control" name="status" id="status" value="1" checked="" required />
-                                        Hidden: <input type="radio" class="flat form-control" name="status" id="status" value="0" />
+                                        <input type="file" id="image" name="images[]"  class="form-control" multiple>
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="col-md-6 col-sm-6 offset-md-3">
-                                        <a href="{{ route('slider.index') }}" class="btn btn-secondary" type="button">Back</a>
+                                        <a href="{{ route('gallery.index') }}" class="btn btn-secondary" type="button">Back</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
-                                        <button type="submit" name="submit" class="btn btn-success">Save Slider</button>
+                                        <button type="submit" name="submit" class="btn btn-success">Save Gallery</button>
                                     </div>
                                 </div>
                             </form>

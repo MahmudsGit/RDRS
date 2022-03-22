@@ -25,6 +25,7 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function (){
 
     Route::resource('page','\App\Http\Controllers\Admin\PageController');
     Route::resource('slider','\App\Http\Controllers\Admin\SliderController');
+    Route::resource('gallery','\App\Http\Controllers\Admin\GalleryController');
 
 });
 

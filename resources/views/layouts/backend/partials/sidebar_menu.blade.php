@@ -16,8 +16,8 @@
             </li>
             <li><a><i class="fa fa-edit"></i> Gallery <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="#">Create Gallery</a></li>
-                    <li><a href="#">All Gallery</a></li>
+                    <li><a href="{{ route('gallery.create') }}">Create Gallery</a></li>
+                    <li><a href="{{ route('gallery.index') }}">All Gallery</a></li>
                 </ul>
             </li>
         </ul>
