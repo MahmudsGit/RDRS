@@ -35,7 +35,7 @@
                         <div class="x_content">
                             <div class="row">
                                 <?php
-                                    $images =  json_decode($gallery->image)
+                                $images =  (array)json_decode($gallery->image)
                                 ?>
                                 @foreach($images as $image)
                                 <div class="col-md-55">
@@ -46,7 +46,6 @@
                                                 <p>{{ $gallery->gallery_title }}</p>
                                                 <div class="tools tools-bottom">
                                                     <a href="#"><i class="fa fa-search-plus"></i></a>
-                                                    <a href="#"><i class="fa fa-times"></i></a>
                                                 </div>
                                             </div>
                                         </div>

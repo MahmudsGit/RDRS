@@ -8,7 +8,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Slider Form</h3>
+                    <h3>Gallery Form</h3>
                 </div>
                 <div class="title_right">
                     <div class="pull-right">
@@ -57,8 +57,8 @@
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                <div class="item form-group pull-right">
+                                    <div class="col-md-12 col-sm-12">
                                         <a href="{{ route('gallery.index') }}" class="btn btn-secondary" type="button">Back</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
                                         <button type="submit" name="submit" class="btn btn-success">Save Gallery</button>

@@ -83,8 +83,8 @@
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                <div class="item form-group pull-right">
+                                    <div class="col-md-12 col-sm-12">
                                         <a href="{{ route('slider.index') }}" class="btn btn-secondary" type="button">Back</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
                                         <button type="submit" name="submit" class="btn btn-success">Save Slider</button>

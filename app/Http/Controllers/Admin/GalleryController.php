@@ -94,7 +94,8 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        return view('backend.gallery.edit_gallery',compact('gallery'));
     }
 
     /**
