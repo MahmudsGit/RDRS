@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use App\Models\Page;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -84,7 +85,8 @@ class PageController extends Controller
     {
         $pages = Page::latest()->get();
         $single_page = Page::find($id);
-        return view('backend.page.attribute_page',compact('pages','single_page'));
+        $galleries = Gallery::latest()->get();
+        return view('backend.page.attribute_page',compact('pages','single_page','galleries'));
     }
 
     /**
