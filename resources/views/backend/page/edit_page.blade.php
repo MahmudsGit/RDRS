@@ -13,7 +13,7 @@
 
                 <div class="title_right">
                     <div class="pull-right">
-                        <a href="{{ route('page.index') }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> Pages </a>
+                        <a href="{{ route('page.index') }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i> All Pages </a>
                     </div>
                 </div>
             </div>
@@ -41,32 +41,31 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Page Name <span class="required">*</span>
+                                    <label class="col-form-label col-md-2 col-sm-2 label-align" for="name">Page Name <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 ">
+                                    <div class="col-md-9 col-sm-9 ">
                                         <input type="text" id="name" name="name" class="form-control" value="{{ $page->name }}">
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="details">Page Details <span class="required">*</span>
+                                    <label class="col-form-label col-md-2 col-sm-2 label-align" for="details">Page Details <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 ">
+                                    <div class="col-md-9 col-sm-9 ">
                                         <textarea id="mytextarea" name="details" class="form-control" placeholder="Page Description">{{ $page->details }}</textarea>
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="page_image">Page Image <span class="required">*</span>
+                                    <label class="col-form-label col-md-2 col-sm-2 label-align" for="page_image">Page Image <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 ">
+                                    <div class="col-md-9 col-sm-9 ">
                                         <input type="file" id="page_image" name="page_image"  class="form-control ">
                                         <img src="{{ asset('storage/images/page').'/' }}{{$page->page_image}}" width="80px" height="40px">
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                <div class="item form-group pull-right">
+                                    <div class="col-md-12 col-sm-12">
                                         <a href="{{ route('page.index') }}" class="btn btn-secondary" type="button">Back</a>
-                                        <button class="btn btn-primary" type="reset">Reset</button>
                                         <button type="submit" name="submit" class="btn btn-success">Update Page</button>
                                     </div>
                                 </div>
@@ -80,5 +79,10 @@
 
 @endsection
 @push('js')
-
+    <script src="https://cdn.tiny.cloud/1/biwmgrfmxy8b3t7jcor3p8tv6kmin5vzka4yi9b770ruvrje/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 @endpush

@@ -29,7 +29,7 @@
     <!-- Custom Theme Style -->
     <link href="{{ asset('backend/build/css/custom.min.css') }}" rel="stylesheet">
     <!-- Toastr -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="{{ asset('backend/build/css/toastr.min.css') }}">
     @stack('css')
 </head>
 
@@ -120,7 +120,7 @@
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('backend/build/js/custom.min.js') }}"></script>
 <!-- Toastr js -->
-<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('backend/build/js/toastr.min.js') }}"></script>
 {!! Toastr::message() !!}
 <script>
     @if($errors->any())

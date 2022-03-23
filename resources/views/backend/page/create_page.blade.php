@@ -40,29 +40,29 @@
                             <form action="{{ route('page.store') }}" method="POST" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                 @csrf
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Page Name <span class="required">*</span>
+                                    <label class="col-form-label col-md-2 col-sm-2 label-align" for="name">Page Name <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 ">
+                                    <div class="col-md-9 col-sm-9 ">
                                         <input type="text" id="name" name="name" class="form-control ">
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="details">Page Details <span class="required">*</span>
+                                    <label class="col-form-label col-md-2 col-sm-2 label-align" for="details">Page Details <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <textarea id="mytextarea" name="details" class="form-control" placeholder="Page Description"></textarea>
+                                    <div class="col-md-9 col-sm-9 ">
+                                        <textarea id="mytextarea" name="details" class="form-control" placeholder="Page Description (Browser May doesn't Support Direct Access to Clipboard / Ctrl+V Keyboard Shortcuts instead.)"></textarea>
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="page_image">Page Image <span class="required">*</span>
+                                    <label class="col-form-label col-md-2 col-sm-2 label-align" for="page_image">Page Image <span class="required">*</span>
                                     </label>
-                                    <div class="col-md-6 col-sm-6 ">
+                                    <div class="col-md-9 col-sm-9 ">
                                         <input type="file" id="page_image" name="page_image"  class="form-control ">
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                <div class="item form-group pull-right">
+                                    <div class="col-md-12 col-sm-12">
                                         <a href="{{ route('page.index') }}" class="btn btn-secondary" type="button">Back</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
                                         <button type="submit" name="submit" class="btn btn-success">Save Page</button>
@@ -78,5 +78,10 @@
 
 @endsection
 @push('js')
-
+    <script src="https://cdn.tiny.cloud/1/biwmgrfmxy8b3t7jcor3p8tv6kmin5vzka4yi9b770ruvrje/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 @endpush

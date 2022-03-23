@@ -20,7 +20,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('backend.gallery.all_gallery');
+        $galleries = Gallery::latest()->get();
+        return view('backend.gallery.all_gallery',compact('galleries'));
     }
 
     /**
