@@ -26,9 +26,19 @@
                         <div class="x_title">
                             <h2>{{ $gallery->gallery_name }} Gallery <small> {{ $gallery->gallery_title }}</small></h2>
                             <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                                <li><a href="{{ route('gallery.edit',$gallery->id ) }}" class="#"><i class="fa fa-pencil"></i></a>
-                                <li><a class="#"><i class="fa fa-close"></i></a>
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('gallery.edit',$gallery->id ) }}" class="#"><i class="fa fa-pencil"></i></a>
+                                </li>
+                                <li>
+                                    <a onclick="deleteGallery({{ $gallery->id }})" class=""><i class="fa fa-close"></i></a>
+                                    <form id="delete-form-{{$gallery->id}}" action="{{ route('gallery.destroy',$gallery->id ) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -63,5 +73,47 @@
 
 @endsection
 @push('js')
+    <script src="{{ asset('backend/build/js/sweetalert2.js') }}"></script>
+    <script type="text/javascript">
+        function deleteGallery(id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
 
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it !',
+                cancelButtonText: 'No, cancel !',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.preventDefault();
+                    document.getElementById('delete-form-'+id).submit();
+
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your file is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
 @endpush

@@ -36,9 +36,9 @@
                         </div>
                         <div class="x_content">
                             <br />
-                            <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                            <form action="{{ route('gallery.update',$gallery->id) }}" method="POST" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                                 @csrf
+                                @method('PUT')
                                 <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="gallery_name">Gallery Name <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Previous Gallery<span class="required">*</span></label>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Gallery Images <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 ">
                                         <?php
                                         $images =  (array)json_decode($gallery->image)

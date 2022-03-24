@@ -45,7 +45,7 @@ class GalleryController extends Controller
         $this->validate($request, [
            'gallery_name'=>'required',
            'gallery_title'=>'required',
-           'image.*'=>'required|mimes:jpg,png,jpeg,bmp|'
+           'image.*'=>'required|mimes:jpg,png,jpeg,bmp',
         ]);
 
         $images=[];
@@ -107,7 +107,49 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'gallery_name'=>'required',
+            'gallery_title'=>'required',
+            'image.*'=>'required|mimes:jpg,png,jpeg,bmp',
+        ]);
+
+        $gallery= Gallery::find($id);
+        $prevImages = (array)json_decode($gallery->image);
+        if (isset($request->image)){
+            foreach ($prevImages as $prevImage){
+                if (Storage::disk('public')->exists('images/gallery'.'/'.$prevImage)){
+                    Storage::disk('public')->delete('images/gallery'.'/'.$prevImage);
+                }
+            }
+            $images=[];
+            if ($request->hasFile('image')){
+                $i = 0;
+                foreach ($request->file('image') as $ImageFile){
+                    $current_date = Carbon::now()->toDateString();
+                    $image_name = $i.'-'.$current_date.'-'.uniqid().'.'.$ImageFile->getClientOriginalExtension();
+                    if (!Storage::disk('public')->exists('images/gallery')){
+                        Storage::disk('public')->makeDirectory('images/gallery');
+                    }
+                    Image::make($ImageFile)->resize(600,400)->save('storage/images/gallery/'.$image_name);
+
+                    $images[]=$image_name;
+                    $i++;
+                }
+            }
+        }else{
+            foreach ($prevImages as $prevImage){
+                $images[]=$prevImage;
+            }
+        }
+
+        $gallery->gallery_name = $request->gallery_name;
+        $gallery->gallery_title = $request->gallery_title;
+        $gallery->image = json_encode($images);
+        $gallery->save();
+
+        Toastr::success('Gallery Update Success','Success');
+        return redirect()->back();
     }
 
     /**
@@ -118,6 +160,16 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        $delImages = (array)json_decode($gallery->image);
+        foreach ($delImages as $delImage){
+            if (Storage::disk('public')->exists('images/gallery'.'/'.$delImage)){
+                Storage::disk('public')->delete('images/gallery'.'/'.$delImage);
+            }
+        }
+        $gallery->delete();
+
+        Toastr::success('Gallery Deleted Success','Success');
+        return redirect()->back();
+        }
     }
-}
